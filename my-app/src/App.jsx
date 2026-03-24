@@ -147,6 +147,20 @@ function GlobalStyles() {
       .nav-link::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:${C.umber}; transition:width 0.3s ease; }
       .nav-link:hover::after { width:100%; }
 
+      .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+      .flex-wrap-mobile { display: flex; gap: 1.5rem; }
+      .nav-scroll { display: flex; gap: 2.5rem; overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none; white-space: nowrap; padding-bottom: 5px; }
+      .nav-scroll::-webkit-scrollbar { display: none; }
+      
+      @media (max-width: 900px) {
+        .grid-2 { grid-template-columns: 1fr !important; gap: 3.5rem !important; }
+        .flex-wrap-mobile { flex-wrap: wrap !important; }
+        section { padding: 5rem 1.5rem !important; }
+        h1 { font-size: clamp(3rem, 12vw, 4.5rem) !important; line-height: 1.05 !important; }
+        p { font-size: 1.1rem !important; }
+        .hide-mobile { display: none !important; }
+      }
+
       .skill-badge {
         transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, background 0.25s;
         animation: badgeFloat 4s ease-in-out var(--delay, 0s) infinite;
@@ -703,7 +717,7 @@ function Nav({ page, setPage }) {
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 900, background: scrolled ? `rgba(245,240,232,0.96)` : "transparent", backdropFilter: scrolled ? "blur(14px)" : "none", borderBottom: scrolled ? `1px solid ${C.sand}` : "none", transition: "all 0.5s ease", padding: "0 3rem", display: "flex", alignItems: "center", justifyContent: "space-between", height: 70 }}>
       <button onClick={() => { setPage("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }} style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.15rem", fontWeight: 700, color: C.espresso, letterSpacing: "0.05em", background: "none", border: "none", cursor: "pointer" }}>KN.</button>
-      <div style={{ display: "flex", alignItems: "center", gap: "2.5rem" }}>
+      <div className="nav-scroll" style={{ alignItems: "center" }}>
         {items.map(it => (
           <button key={it.label} onClick={it.action} className="nav-link" style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.7rem", letterSpacing: "0.2em", textTransform: "uppercase", color: C.charcoal, background: "none", border: "none", cursor: "pointer", padding: 0, transition: "color 0.3s" }}
             onMouseEnter={e => e.currentTarget.style.color = C.umber}
@@ -826,8 +840,8 @@ function HomePage({ setPage }) {
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section id="home" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden", padding: "0 3rem" }}>
-        <div style={{ position: "absolute", inset: 0, opacity: 0.032, backgroundImage: `radial-gradient(circle, ${C.espresso} 1px, transparent 1px)`, backgroundSize: "40px 40px", transform: `translateY(${scrollY * 0.13}px)`, transition: "transform 0.04s linear" }} />
-        <div style={{ position: "absolute", right: "8%", top: "50%", width: 500, height: 500, borderRadius: "50%", border: `1px solid ${C.sand}`, opacity: 0.45, transform: `translateY(calc(-50% + ${scrollY * 0.07}px))` }} />
+        <div className="hide-mobile" style={{ position: "absolute", inset: 0, opacity: 0.032, backgroundImage: `radial-gradient(circle, ${C.espresso} 1px, transparent 1px)`, backgroundSize: "40px 40px", transform: `translateY(${scrollY * 0.13}px)`, transition: "transform 0.04s linear" }} />
+        <div className="hide-mobile" style={{ position: "absolute", right: "8%", top: "50%", width: 500, height: 500, borderRadius: "50%", border: `1px solid ${C.sand}`, opacity: 0.45, transform: `translateY(calc(-50% + ${scrollY * 0.07}px))` }} />
         <div style={{ position: "absolute", right: "12%", top: "50%", width: 360, height: 360, borderRadius: "50%", border: `1px solid ${C.warm}`, opacity: 0.28, animation: "rotateSlow 30s linear infinite" }} />
         <div style={{ position: "absolute", right: "16.5%", top: "50%", width: 220, height: 220, borderRadius: "50%", border: `1px solid ${C.gold}`, opacity: 0.18, animation: "rotateSlow 18s linear infinite reverse" }} />
         <Sparkles n={9} />
@@ -848,7 +862,7 @@ function HomePage({ setPage }) {
 
         <p style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.08rem", color: C.warm, maxWidth: 470, lineHeight: 1.75, opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 1.4s" }}>{CV.tagline}</p>
 
-        <div style={{ display: "flex", gap: "1.5rem", marginTop: "3rem", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 1.6s" }}>
+        <div className="flex-wrap-mobile" style={{ marginTop: "3rem", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 1.6s" }}>
           <button onClick={() => setPage("projects")} style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.78rem", letterSpacing: "0.2em", textTransform: "uppercase", background: C.espresso, color: C.cream, border: "none", padding: "1.1rem 2.8rem", cursor: "pointer", borderRadius: 2, transition: "all 0.4s" }}
             onMouseEnter={e => e.currentTarget.style.background = C.umber}
             onMouseLeave={e => e.currentTarget.style.background = C.espresso}
@@ -869,7 +883,7 @@ function HomePage({ setPage }) {
 
       {/* ── ABOUT ────────────────────────────────────────── */}
       <section id="about" style={{ background: C.espresso, position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "center", position: "relative", zIndex: 2 }}>
+        <div className="grid-2" style={{ maxWidth: 1100, margin: "0 auto", alignItems: "center", position: "relative", zIndex: 2 }}>
           <Rev>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.68rem", letterSpacing: "0.4em", color: C.umber, textTransform: "uppercase", marginBottom: "1.5rem" }}>01 — About</div>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(2.4rem,5vw,3.8rem)", color: C.cream, fontWeight: 900, lineHeight: 1.05, marginBottom: "2rem", letterSpacing: "-0.02em" }}>
@@ -1048,7 +1062,7 @@ function HomePage({ setPage }) {
 
       {/* ── CONTACT ──────────────────────────────────────── */}
       <section id="contact" style={{ padding: "6rem 3rem", background: C.bone }}>
-        <div style={{ maxWidth: 1100, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem", alignItems: "start" }}>
+        <div className="grid-2" style={{ maxWidth: 1100, margin: "0 auto", alignItems: "start" }}>
           {/* Left — contact info */}
           <Rev>
             {/* Vintage envelope card */}
@@ -1078,7 +1092,7 @@ function HomePage({ setPage }) {
             </div>
 
             {/* Polaroid contact cards */}
-            <div style={{ display: "flex", gap: "1rem" }}>
+            <div className="flex-wrap-mobile" style={{ gap: "1rem" }}>
               {[
                 { title: "Based in", value: "New Delhi, India", rot: -4, col: C.umber },
                 { title: "Response in", value: "< 24 hours", rot: 3, col: "#2A3D5A" },
@@ -1168,7 +1182,7 @@ function ContactForm() {
 
       <form ref={formRef} onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
         {/* Name & Email Row */}
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+        <div className="grid-2" style={{ gap: "2rem" }}>
           {[
             { key: "name", label: "Your Name", type: "text", ph: "Kuhu Narang" },
             { key: "email", label: "Your Email", type: "email", ph: "hello@domain.com" },
