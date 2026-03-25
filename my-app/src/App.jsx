@@ -906,7 +906,7 @@ function HomePage({ setPage }) {
           <Rev delay={0.2}>
             <p style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "1.18rem", color: C.sand, lineHeight: 1.9, marginBottom: "2.5rem" }}>{CV.about}</p>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
-              {[["2+", "Years Experience"], ["5", "Live Projects"], ["2", "Internships"], ["2+", "Certifications"]].map(([n, l]) => (
+              {[["3rd", "Year CSE Student"], ["5", "Live Projects"], ["2", "Internships"], ["2+", "Certifications"]].map(([n, l]) => (
                 <div key={l} style={{ borderTop: `1px solid ${C.charcoal}`, paddingTop: "1rem" }}>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "2.2rem", color: C.gold, fontWeight: 900 }}>{n}</div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.65rem", color: C.warm, letterSpacing: "0.1em", textTransform: "uppercase", marginTop: 4 }}>{l}</div>
