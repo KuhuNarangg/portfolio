@@ -841,10 +841,10 @@ function HomePage({ setPage }) {
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section id="home" style={{ minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", position: "relative", overflow: "hidden", padding: "0 3rem" }}>
-        <div className="hide-mobile" style={{ position: "absolute", inset: 0, opacity: 0.032, backgroundImage: `radial-gradient(circle, ${C.espresso} 1px, transparent 1px)`, backgroundSize: "40px 40px", transform: `translateY(${scrollY * 0.13}px)`, transition: "transform 0.04s linear" }} />
-        <div className="hide-mobile" style={{ position: "absolute", right: "8%", top: "50%", width: 500, height: 500, borderRadius: "50%", border: `1px solid ${C.sand}`, opacity: 0.45, transform: `translateY(calc(-50% + ${scrollY * 0.07}px))` }} />
-        <div style={{ position: "absolute", right: "12%", top: "50%", width: 360, height: 360, borderRadius: "50%", border: `1px solid ${C.warm}`, opacity: 0.28, animation: "rotateSlow 30s linear infinite" }} />
-        <div style={{ position: "absolute", right: "16.5%", top: "50%", width: 220, height: 220, borderRadius: "50%", border: `1px solid ${C.gold}`, opacity: 0.18, animation: "rotateSlow 18s linear infinite reverse" }} />
+        <div className="hide-mobile" style={{ position: "absolute", inset: 0, opacity: 0.032, backgroundImage: `radial-gradient(circle, ${C.espresso} 1px, transparent 1px)`, backgroundSize: "40px 40px", transform: `translateY(${scrollY * 0.13}px)`, transition: "transform 0.04s linear", pointerEvents: "none" }} />
+        <div className="hide-mobile" style={{ position: "absolute", right: "8%", top: "50%", width: 500, height: 500, borderRadius: "50%", border: `1px solid ${C.sand}`, opacity: 0.45, transform: `translateY(calc(-50% + ${scrollY * 0.07}px))`, pointerEvents: "none" }} />
+        <div style={{ position: "absolute", right: "12%", top: "50%", width: 360, height: 360, borderRadius: "50%", border: `1px solid ${C.warm}`, opacity: 0.28, animation: "rotateSlow 30s linear infinite", pointerEvents: "none" }} />
+        <div style={{ position: "absolute", right: "16.5%", top: "50%", width: 220, height: 220, borderRadius: "50%", border: `1px solid ${C.gold}`, opacity: 0.18, animation: "rotateSlow 18s linear infinite reverse", pointerEvents: "none" }} />
         <Sparkles n={9} />
 
         <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.72rem", letterSpacing: "0.4em", color: C.umber, textTransform: "uppercase", marginBottom: "2rem", opacity: loaded ? 1 : 0, transition: "opacity 0.8s ease 0.3s" }}>◆ Available for Work · Based in India</div>
