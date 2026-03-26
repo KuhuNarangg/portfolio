@@ -16,6 +16,7 @@ const CV = {
   tagline: "Crafting digital experiences that live at the intersection of logic and beauty.",
   email: "kuhunarang@gmail.com",
   github: "https://github.com/KuhuNarangg",
+  linkedin: "https://www.linkedin.com/in/kuhunarang/",
   mobile: "+91-9540025777",
   resumeUrl: cvFile,
   certificatesUrl: "#",
@@ -1074,7 +1075,7 @@ function HomePage({ setPage }) {
                 {[
                   { icon: "✉", label: "Email", value: CV.email, href: `mailto:${CV.email}` },
                   { icon: "⌥", label: "GitHub", value: "github.com/KuhuNarangg", href: CV.github },
-                  { icon: "in", label: "LinkedIn", value: "linkedin.com/in/kuhu-narang", href: CV.linkedin },
+                  { icon: "in", label: "LinkedIn", value: "linkedin.com/in/kuhunarang", href: CV.linkedin },
                   { icon: "☎", label: "Mobile", value: CV.mobile, href: `tel:${CV.mobile}` },
                 ].map(item => (
                   <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" style={{ display: "flex", gap: "1rem", alignItems: "flex-start", marginBottom: "1.25rem", textDecoration: "none", transition: "all 0.3s", padding: "0.5rem 0" }}
