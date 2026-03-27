@@ -94,9 +94,9 @@ const CV = {
     },
   ],
   certifications: [
-    { name: "Advanced Computer Networks", issuer: "NPTEL", year: "Apr 2025", icon: "🌐" },
-    { name: "Bits and Bytes of Computer Networking", issuer: "Google · Coursera", year: "Sep 2024", icon: "☁️" },
-    { name: "Intro to Hardware and Operating Systems", issuer: "IBM", year: "Aug 2024", icon: "💻" },
+    { name: "Advanced Computer Networks", issuer: "NPTEL", year: "Apr 2025", icon: "🌐", link: "https://pdf.ac/fFwrqC0aW9" },
+    { name: "Bits and Bytes of Computer Networking", issuer: "Google · Coursera", year: "Sep 2024", icon: "☁️", link: "https://pdflink.to/96371f0e/" },
+    { name: "Intro to Hardware and Operating Systems", issuer: "IBM", year: "Aug 2024", icon: "💻", link: "https://pdflink.to/acb4ac9f/" },
   ],
   achievements: [
     { label: "Python Gold Badge", org: "HackerRank", year: "Jan 2026" },
@@ -1026,16 +1026,30 @@ function HomePage({ setPage }) {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.25rem", marginBottom: "3rem" }}>
             {CV.certifications.map((cert, i) => (
               <Rev key={cert.name} delay={i * 0.1}>
-                <div style={{ background: C.cream, border: `1px solid ${C.sand}`, padding: "2rem", borderRadius: 2, position: "relative", overflow: "hidden", transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s", height: "100%" }}
-                  onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = `0 22px 44px rgba(26,18,8,0.1)`; e.currentTarget.style.borderColor = C.warm; }}
-                  onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = C.sand; }}
+                <a href={cert.link} target="_blank" rel="noopener noreferrer" 
+                   data-hover
+                   style={{ 
+                     display: "block",
+                     textDecoration: "none",
+                     background: C.cream, 
+                     border: `1px solid ${C.sand}`, 
+                     padding: "2rem", 
+                     borderRadius: 2, 
+                     position: "relative", 
+                     overflow: "hidden", 
+                     transition: "transform 0.3s, box-shadow 0.3s, border-color 0.3s", 
+                     height: "100%",
+                     cursor: "pointer"
+                   }}
+                   onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-6px)"; e.currentTarget.style.boxShadow = `0 22px 44px rgba(26,18,8,0.1)`; e.currentTarget.style.borderColor = C.warm; }}
+                   onMouseLeave={e => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.borderColor = C.sand; }}
                 >
                   <div style={{ fontSize: "1.7rem", marginBottom: "0.85rem" }}>{cert.icon}</div>
                   <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.6rem", color: C.warm, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.6rem" }}>{cert.year}</div>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "1.05rem", color: C.espresso, fontWeight: 700, marginBottom: "0.4rem", lineHeight: 1.3 }}>{cert.name}</div>
                   <div style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "0.88rem", color: C.warm, fontStyle: "italic" }}>{cert.issuer}</div>
                   <div style={{ position: "absolute", top: -10, right: -10, width: 56, height: 56, borderRadius: "50%", background: `${C.gold}12`, border: `1px solid ${C.gold}28` }} />
-                </div>
+                </a>
               </Rev>
             ))}
           </div>
