@@ -891,14 +891,41 @@ function HomePage({ setPage }) {
               <SplitText text="The mind behind the machine." />
             </h2>
             {/* Developer ID card */}
-            <div style={{ background: "rgba(201,168,76,0.06)", border: `1px solid ${C.charcoal}`, borderLeft: `3px solid ${C.gold}`, padding: "1.5rem", borderRadius: 2, marginTop: "1.5rem" }}>
-              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: C.umber, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.9rem" }}>Developer ID · 2024</div>
-              {[["Name", "Kuhu Narang"], ["Degree", "B.Tech CS — LPU"], ["CGPA", "7.7 · Currently Active"], ["Status", "Open to Work ●"]].map(([k, v]) => (
-                <div key={k} style={{ display: "flex", gap: "1rem", marginBottom: "0.45rem", alignItems: "center" }}>
-                  <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: C.warm, width: 68, flexShrink: 0 }}>{k}:</span>
-                  <span style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "0.95rem", color: k === "Status" ? C.gold : C.sand }}>{v}</span>
+            <div style={{ background: "rgba(201,168,76,0.06)", border: `1px solid ${C.charcoal}`, borderLeft: `3px solid ${C.gold}`, padding: "1.5rem", borderRadius: 2, marginTop: "1.5rem", display: "flex", gap: "1.5rem", alignItems: "center" }}>
+              {/* Refined Portrait Archive Frame */}
+              <div style={{ 
+                width: 140, 
+                height: 165, 
+                background: C.bone, 
+                padding: "8px 8px 26px", 
+                borderRadius: 2, 
+                boxShadow: `0 12px 32px rgba(0,0,0,0.25), inset 0 0 20px rgba(0,0,0,0.05)`,
+                border: `1px solid ${C.charcoal}`,
+                flexShrink: 0,
+                transform: "rotate(-2deg)",
+                transition: "transform 0.4s cubic-bezier(0.16,1,0.3,1)",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "column"
+              }}
+              onMouseEnter={e => e.currentTarget.style.transform = "rotate(0deg) scale(1.05) translateY(-5px)"}
+              onMouseLeave={e => e.currentTarget.style.transform = "rotate(-2deg) scale(1) translateY(0)"}
+              >
+                <div style={{ flex: 1, overflow: "hidden", borderRadius: 1, background: "#000", position: "relative" }}>
+                  <img src="/pic.png" alt="Kuhu Narang" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", filter: "sepia(0.1) contrast(1.05) brightness(1.02)" }} />
+                  <div style={{ position: "absolute", inset: 0, boxShadow: "inset 0 0 40px rgba(0,0,0,0.3)", pointerEvents: "none" }} />
                 </div>
-              ))}
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.45rem", color: C.umber, textAlign: "center", marginTop: 8, letterSpacing: "0.1em", opacity: 0.7 }}>// DEV_REF_PORTRAIT</div>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: C.umber, letterSpacing: "0.3em", textTransform: "uppercase", marginBottom: "0.9rem" }}>Developer ID · 2024</div>
+                {[["Name", "Kuhu Narang"], ["Degree", "B.Tech CS — LPU"], ["CGPA", "7.7 · Currently Active"], ["Status", "Open to Work ●"]].map(([k, v]) => (
+                  <div key={k} style={{ display: "flex", gap: "1rem", marginBottom: "0.45rem", alignItems: "center" }}>
+                    <span style={{ fontFamily: "'DM Mono', monospace", fontSize: "0.62rem", color: C.warm, width: 68, flexShrink: 0 }}>{k}:</span>
+                    <span style={{ fontFamily: "'Cormorant Garant', serif", fontSize: "0.95rem", color: k === "Status" ? C.gold : C.sand }}>{v}</span>
+                  </div>
+                ))}
+              </div>
             </div>
             
             {/* Coffee + Code Element */}
